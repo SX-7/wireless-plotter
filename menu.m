@@ -1,0 +1,10 @@
+clear all; close all;
+A = importdata("data.txt",";");
+x = A(:,2);
+y = A(:,3);
+z = A(:,4);
+xvar = min(x) : (max(x)-min(x))/200 : max(x);
+yvar = min(y) : (max(y)-min(y))/200 : max(y);
+[Xi,Yi] = meshgrid( xvar, yvar );
+out = griddata( x, y, z, Xi,Yi, 'cubic' );
+figure; surf( out );
